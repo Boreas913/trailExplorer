@@ -1,0 +1,172 @@
+[
+  {
+    "id": 1,
+    "name": "Cress Creek Nature Trail",
+    "location": "Ririe, ID",
+    "distance": 1.3,
+    "difficulty": "Easy",
+    "length": "1.3 miles",
+    "elevationGain": "280 ft",
+    "time": "35 minutes",
+    "image": "images/cress-creek.jpg",
+    "description": "A beautiful creek-side trail with bridges, wildflowers, and canyon views.",
+    "favorite": false,
+    "coordinates": {
+      "lat": 43.614,
+      "lng": -111.76
+    }
+  },
+  {
+    "id": 2,
+    "name": "Kelly Canyon Trail",
+    "location": "Ririe, ID",
+    "distance": 25,
+    "difficulty": "Moderate",
+    "length": "3.8 miles",
+    "elevationGain": "1,000 ft",
+    "time": "2 hours",
+    "image": "images/kelly-canyon.jpg",
+    "description": "A forested mountain hike with scenic overlooks and abundant wildlife.",
+    "favorite": false,
+    "coordinates": {
+      "lat": 43.72,
+      "lng": -111.68
+    }
+  },
+  {
+    "id": 3,
+    "name": "Webster's Dam Trail",
+    "location": "Ashton, ID",
+    "distance": 35,
+    "difficulty": "Moderate",
+    "length": "2.7 miles",
+    "elevationGain": "520 ft",
+    "time": "1.5 hours",
+    "image": "images/websters-dam.jpg",
+    "description": "A wooded trail leading to a historic dam and beautiful waterfall.",
+    "favorite": false,
+    "coordinates": {
+      "lat": 44.05,
+      "lng": -111.47
+    }
+  },
+  {
+    "id": 4,
+    "name": "Hidden Vista Loop",
+    "location": "Caribou-Targhee National Forest",
+    "distance": 20,
+    "difficulty": "Easy",
+    "length": "1.1 miles",
+    "elevationGain": "180 ft",
+    "time": "30 minutes",
+    "image": "images/hidden-vista.jpg",
+    "description": "A short scenic loop with panoramic views of the surrounding mountains.",
+    "favorite": false,
+    "coordinates": {
+      "lat": 43.84,
+      "lng": -111.51
+    }
+  },
+  {
+    "id": 5,
+    "name": "Menan Butte (R Mountain)",
+    "location": "Menan, ID",
+    "distance": 18,
+    "difficulty": "Moderate",
+    "length": "1.8 miles",
+    "elevationGain": "700 ft",
+    "time": "1 hour",
+    "image": "images/menan-butte.jpg",
+    "description": "A steep volcanic butte offering incredible views of the Snake River Plain.",
+    "favorite": false,
+    "coordinates": {
+      "lat": 43.88,
+      "lng": -111.99
+    }
+  },
+  {
+    "id": 6,
+    "name": "Upper Palisades Lake Trail",
+    "location": "Irwin, ID",
+    "distance": 55,
+    "difficulty": "Hard",
+    "length": "15 miles",
+    "elevationGain": "2,400 ft",
+    "time": "7 hours",
+    "image": "images/upper-palisades.jpg",
+    "description": "One of Eastern Idaho's most scenic alpine lake hikes with spectacular mountain views.",
+    "favorite": false,
+    "coordinates": {
+      "lat": 43.32,
+      "lng": -111.2
+    }
+  },
+  {
+    "id": 7,
+    "name": "Lower Palisades Lake Trail",
+    "location": "Irwin, ID",
+    "distance": 55,
+    "difficulty": "Moderate",
+    "length": "6 miles",
+    "elevationGain": "900 ft",
+    "time": "3 hours",
+    "image": "images/lower-palisades.jpg",
+    "description": "A beautiful trail following the creek to a peaceful mountain lake.",
+    "favorite": false,
+    "coordinates": {
+      "lat": 43.34,
+      "lng": -111.22
+    }
+  },
+  {
+    "id": 8,
+    "name": "Civil Defense Caves",
+    "location": "St. Anthony, ID",
+    "distance": 32,
+    "difficulty": "Easy",
+    "length": "4 miles",
+    "elevationGain": "Minimal",
+    "time": "2 hours",
+    "image": "images/civil-defense-caves.jpg",
+    "description": "Explore lava tubes and underground caves—bring a flashlight and sturdy shoes.",
+    "favorite": false,
+    "coordinates": {
+      "lat": 43.93,
+      "lng": -111.67
+    }
+  },
+  {
+    "id": 9,
+    "name": "Moody Swamp to Red Butte",
+    "location": "Caribou-Targhee National Forest",
+    "distance": 30,
+    "difficulty": "Hard",
+    "length": "7.3 miles",
+    "elevationGain": "1,800 ft",
+    "time": "4 hours",
+    "image": "images/red-butte.jpg",
+    "description": "A challenging backcountry hike with sweeping views from Red Butte.",
+    "favorite": false,
+    "coordinates": {
+      "lat": 43.92,
+      "lng": -111.47
+    }
+  },
+  {
+    "id": 10,
+    "name": "Teton Dam Site Trail",
+    "location": "Newdale, ID",
+    "distance": 20,
+    "difficulty": "Easy",
+    "length": "6 miles",
+    "elevationGain": "250 ft",
+    "time": "2 hours",
+    "image": "images/teton-dam.jpg",
+    "description": "Walk through history at the site of the 1976 Teton Dam failure with scenic river views.",
+    "favorite": false,
+    "coordinates": {
+      "lat": 43.88,
+      "lng": -111.56
+    }
+  }
+]

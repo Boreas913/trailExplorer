@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+--mainBrown: #6A5B39;
+}
+
+body, html {
+    height: 100%;
+}
+
+/* The hero image */
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/src/images/pexels-ahmetmert-20019699.jpg");
+
+  height: 20%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+
+/*Hike cards*/
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.hike-card {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.hike-card:hover {
+  transform: translateY(-5px);
+}
+
+.hike-card h3 {
+  margin-bottom: 8px;
+}
+
+.difficulty {
+  font-weight: bold;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+footer{
+    height: 10%;
+    background-color: var(--mainBrown);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.hike-card {
+    position: relative;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.15);
+    cursor: pointer;
+    transition: .25s;
+}
+
+.hike-card:hover {
+    transform: translateY(-5px);
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--mainBrown);
+    color: white;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.favorite-btn:hover {
+    background: #246b44;
+    transform: scale(1.1);
+}
+
+.favorite-btn:disabled {
+    background: #888;
+    cursor: default;
+}
+
+.hike-card {
+    position: relative;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    background: none;
+
+    font-size: 30px;
+    color: #999;
+
+    cursor: pointer;
+    transition: .2s;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.2);
+}
+
+.favorite-btn.favorited {
+    color: crimson;
+}
