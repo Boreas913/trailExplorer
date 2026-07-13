@@ -10,9 +10,10 @@ const modalDistance = document.querySelector("#modalDistance");
 const modalDifficulty = document.querySelector("#modalDifficulty");
 const modalDescription = document.querySelector("#modalDescription");
 
+
 async function loadHikes() {
     try {
-        const response = await fetch("src/data/trails.json");
+        const response = await fetch("/data/trails.json");
 
         if (!response.ok) {
             throw new Error(
