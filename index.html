@@ -45,5 +45,61 @@
       <div id="favoriteTrails" class="cards-container"></div>
       <footer></footer>
     </main>
+    <!-- Plan Your Hike Modal -->
+<div id="hikeModal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+  <div class="modal-overlay"></div>
+  <div class="modal-content">
+    <button class="close-modal" id="closeModalBtn" aria-label="Close modal">&times;</button>
+    
+    <!-- Form State -->
+    <div id="formContainer">
+      <h2 id="modalTitle">Plan Your Hike</h2>
+      <p class="modal-subtitle">Fill out your details to email your trail itinerary!</p>
+      
+      <form id="planHikeForm" novalidate>
+        <input type="hidden" id="selectedTrailId" name="trailId">
+        
+        <div class="form-group">
+          <label for="hikeName">Your Name <span class="required">*</span></label>
+          <input type="text" id="hikeName" name="name" required placeholder="John Doe">
+          <span class="error-message" id="nameError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="hikeEmail">Your Email <span class="required">*</span></label>
+          <input type="email" id="hikeEmail" name="email" required placeholder="john@example.com">
+          <span class="error-message" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="hikeNotes">Optional Notes</label>
+          <textarea id="hikeNotes" name="notes" placeholder="e.g. Remember hiking poles, start before sunrise!"></textarea>
+        </div>
+
+        <div class="selected-trail-preview">
+          <h4>Selected Trail:</h4>
+          <div id="selectedTrailPreview">
+            <!-- Trail info will be dynamically populated here -->
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Send My Plan</button>
+      </form>
+    </div>
+
+    <div id="formConfirmation" class="confirmation-message hidden">
+      <div class="conf-icon">🎉</div>
+      <h3>Hike Planned Successfully!</h3>
+      <p id="confirmationText"></p>
+      
+      <div class="confirmed-itinerary">
+        <h4>Your Itinerary Details:</h4>
+        <div id="confirmedTrailDetails"></div>
+      </div>
+      
+      <button id="closeConfirmBtn" class="close-btn">Awesome, let's go!</button>
+    </div>
+  </div>
+</div>
   </body>
 </html>
