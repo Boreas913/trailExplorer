@@ -8,7 +8,7 @@
     "length": "1.3 miles",
     "elevationGain": "280 ft",
     "time": "35 minutes",
-    "image": "images/pexels-william-finn-1447383610-37259409.jpg",
+    "image": "./src/images/pexels-william-finn-1447383610-37259409.jpg",
     "description": "A beautiful creek-side trail with bridges, wildflowers, and canyon views.",
     "favorite": false,
     "coordinates": {
