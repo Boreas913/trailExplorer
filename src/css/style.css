@@ -165,7 +165,7 @@ footer {
 }
 
 .favorite-btn:hover {
-    background: #246b44;
+    background: var(--blue);
     transform: scale(1.1);
 }
 
@@ -318,7 +318,7 @@ footer {
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: #2d5a27;
+  border-color: var(--Brown);
   outline: 3px solid rgba(45, 90, 39, 0.2);
 }
 
@@ -358,7 +358,7 @@ footer {
 }
 
 .submit-btn:hover, .close-btn:hover {
-  background-color: #1e3d1a;
+  background-color: var(--blue);
 }
 
 /* --- Confirmation Mode --- */
@@ -446,7 +446,7 @@ footer {
 }
 
 .modal-content input[readonly] {
-  background-color: #e9edc9;
+  background-color: var(--lightbrown);
   font-weight: bold;
   color: var(--Brown);
 }
