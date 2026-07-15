@@ -259,7 +259,7 @@ footer {
   z-index: 1001;
   max-height: 90vh;
   overflow-y: auto;
-  border: 2px solid #2d5a27; /* Outdoorsy color element */
+  border: 2px solid var(--darkBrown);
 }
 
 .close-modal {
@@ -280,7 +280,7 @@ footer {
 
 /* --- Form Elements --- */
 .modal h2 {
-  color: #2d5a27;
+  color: var(--darkBrown);
   margin-top: 0;
 }
 
@@ -332,7 +332,7 @@ footer {
 /* --- Trail Preview Box --- */
 .selected-trail-preview {
   background: #f4f6f4;
-  border-left: 4px solid #2d5a27;
+  border-left: 4px solid var(--darkBrown);
   padding: 0.75rem 1rem;
   margin: 1.5rem 0;
   border-radius: 4px;
@@ -345,7 +345,7 @@ footer {
 }
 
 .submit-btn, .close-btn {
-  background-color: #2d5a27;
+  background-color: var(--darkBrown);
   color: white;
   border: none;
   width: 100%;
@@ -413,7 +413,7 @@ footer {
   max-width: 500px;
   position: relative;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  border: 2px solid #4a5d4e; /* Forest green accent */
+  border: 2px solid var(--Brown);
 }
 
 .close-btn {
@@ -423,7 +423,7 @@ footer {
   background: none;
   border: none;
   font-size: 2rem;
-  color: #4a5d4e;
+  color: var(--Brown);
   cursor: pointer;
 }
 
@@ -431,7 +431,7 @@ footer {
   display: block;
   margin-top: 1rem;
   font-weight: bold;
-  color: #2c3531;
+  color: var(--darkBrown);
 }
 
 .modal-content input, 
@@ -448,11 +448,11 @@ footer {
 .modal-content input[readonly] {
   background-color: #e9edc9;
   font-weight: bold;
-  color: #4a5d4e;
+  color: var(--Brown);
 }
 
 .submit-btn {
-  background-color: #4a5d4e;
+  background-color: var(--Brown);
   color: white;
   padding: 0.75rem 1.5rem;
   border: none;
@@ -466,12 +466,12 @@ footer {
 }
 
 .submit-btn:hover {
-  background-color: #3b4d3f;
+  background-color: var(--mainBrown);
 }
 
 blockquote {
   background-color: #e9edc9;
-  border-left: 5px solid #4a5d4e;
+  border-left: 5px solid var(--Brown);
   padding: 1rem;
   margin: 1.5rem 0;
   border-radius: 0 6px 6px 0;
@@ -485,7 +485,7 @@ blockquote {
 }
 
 .plan-hike-btn {
-  background-color: #2c3531; /* Deep charcoal/green */
+  background-color: var(--darkBrown);
   color: #fcfaf2;
   border: none;
   padding: 0.5rem 1rem;
@@ -496,7 +496,7 @@ blockquote {
 }
 
 .plan-hike-btn:hover {
-  background-color: #4a5d4e; /* Earthy Forest green */
+  background-color: var(--Brown);
   transform: translateY(-1px);
 }
 
@@ -521,7 +521,7 @@ blockquote {
 }
 
 .modal-content h2 {
-  color: #2c3531;
+  color: var(--darkBrown);
   margin-bottom: 0.5rem;
 }
 
@@ -535,7 +535,7 @@ blockquote {
   display: block;
   margin-bottom: 0.4rem;
   font-weight: 600;
-  color: #333;
+  color: var(--darkBrown);
 }
 
 .modal-content input[type="text"],
@@ -553,7 +553,7 @@ blockquote {
 .modal-content input[type="text"]:focus,
 .modal-content input[type="email"]:focus,
 .modal-content textarea:focus {
-  border-color: #4a5d4e;
+  border-color: var(--Brown);
   outline: none;
   box-shadow: 0 0 0 3px rgba(74, 93, 78, 0.1);
 }
@@ -565,7 +565,7 @@ blockquote {
 
 .selected-trail-preview {
   background: #f9faf8;
-  border-left: 4px solid #4a5d4e;
+  border-left: 4px solid var(--Brown);
   padding: 1rem;
   margin: 1rem 0;
   border-radius: 4px;
@@ -579,7 +579,7 @@ blockquote {
 }
 
 .selected-trail-preview strong {
-  color: #2c3531;
+  color: var(--darkBrown);
   display: block;
   margin-bottom: 0.25rem;
 }
@@ -601,7 +601,7 @@ blockquote {
 }
 
 #formConfirmation h3 {
-  color: #2c3531;
+  color: var(--darkBrown);
   margin-bottom: 0.5rem;
 }
 
@@ -622,7 +622,7 @@ blockquote {
 
 .confirmed-itinerary h4 {
   margin-top: 0;
-  color: #2c3531;
+  color: var(--darkBrown);
   font-size: 1rem;
 }
 
