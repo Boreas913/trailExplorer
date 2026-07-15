@@ -1,5 +1,6 @@
 const cardsContainer = document.querySelector("#hikeCards");
 const favoritesContainer = document.querySelector("#favoriteTrails");
+const pageContent = document.querySelector("#pageContent");
 
 const modal = document.querySelector("#hikeModal");
 const closeModalButton = document.querySelector("#closeModal");
@@ -183,11 +184,13 @@ function openModal(hike) {
     modalDifficulty.textContent = `Difficulty: ${hike.difficulty}`;
     modalDescription.textContent = hike.description;
 
+    pageContent?.classList.add("hidden");
     modal.classList.remove("hidden");
 }
 
 function closeHikeModal() {
     modal.classList.add("hidden");
+    pageContent?.classList.remove("hidden");
 }
 
 function getFavorites() {

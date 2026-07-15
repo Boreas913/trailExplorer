@@ -9,55 +9,56 @@
     <title>TrailExplorer</title>
   </head>
   <body>
-    <div class="hero-image">
-      <div class="hero-text"><h1>TRAIL EXPLORER</h1></div>
-    </div>
-    <div>
-      <button><h4>Plan Your Hike</h4></button>
-    </div>
-    <div>
+    <main id="pageContent">
+      <div class="hero-image">
+        <div class="hero-text"><h1>TRAIL EXPLORER</h1></div>
+      </div>
       <div>
-        <h2>Discover:</h2>
-        <form action="#">
-          <input type="text" placeholder="Search For New Hikes" name="search">
-          <button>
-            <svg width="16" height="16" viewBox="0 0 24 24">
-            <path d="M21 21l-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"
-            stroke="currentColor" fill="none" stroke-width="2"/>
-            </svg>
-          </button>
-        </form>
+        <button><h4>Plan Your Hike</h4></button>
+      </div>
+      <div>
         <div>
-          <div id="hikeCards" class="cards-container"></div>
-
-          <div id="hikeModal" class="modal hidden">
-            <div class="modal-content">
-              <button id="closeModal" class="close-btn">&times;</button>
-              <img id="modalImage" src="" alt="Hike image" />
-              <h2 id="modalName"></h2>
-              <p id="modalLocation"></p>
-              <p id="modalDistance"></p>
-              <p id="modalDifficulty"></p>
-              <p id="modalDescription"></p>
-            </div>
+          <h2>Discover:</h2>
+          <form action="#">
+            <input type="text" placeholder="Search For New Hikes" name="search">
+            <button>
+              <svg width="16" height="16" viewBox="0 0 24 24">
+              <path d="M21 21l-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"
+              stroke="currentColor" fill="none" stroke-width="2"/>
+              </svg>
+            </button>
+          </form>
+          <div>
+            <div id="hikeCards" class="cards-container"></div>
           </div>
         </div>
+        <div>
+          <h2>Favorites:</h2>
+          <form action="#">
+            <input type="text" placeholder="Search Through Your Favorites" name="search">
+            <button>
+              <svg width="16" height="16" viewBox="0 0 24 24">
+              <path d="M21 21l-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"
+              stroke="currentColor" fill="none" stroke-width="2"/>
+              </svg>
+            </button>
+          </form>
+        </div>
       </div>
-      <div>
-        <h2>Favorites:</h2>
-        <form action="#">
-          <input type="text" placeholder="Search Through Your Favorites" name="search">
-          <button>
-            <svg width="16" height="16" viewBox="0 0 24 24">
-            <path d="M21 21l-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"
-            stroke="currentColor" fill="none" stroke-width="2"/>
-            </svg>
-          </button>
-        </form>
+      <div id="favoriteTrails" class="cards-container"></div>
+      <footer></footer>
+    </main>
+
+    <div id="hikeModal" class="modal hidden">
+      <div class="modal-content">
+        <button id="closeModal" class="close-btn">&times;</button>
+        <img id="modalImage" src="" alt="Hike image" />
+        <h2 id="modalName"></h2>
+        <p id="modalLocation"></p>
+        <p id="modalDistance"></p>
+        <p id="modalDifficulty"></p>
+        <p id="modalDescription"></p>
       </div>
     </div>
-    <div id="favoriteTrails" class="cards-container"></div>
-    <footer></footer>
-    
   </body>
 </html>
