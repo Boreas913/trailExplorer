@@ -492,3 +492,154 @@ blockquote {
 .plan-hike-btn:active {
   transform: translateY(0);
 }
+
+/* --- Error Messages --- */
+.error-message {
+  color: #d9534f;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 0.25rem;
+  min-height: 1.2rem;
+}
+
+/* Modal form styling enhancements */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-content h2 {
+  color: #2c3531;
+  margin-bottom: 0.5rem;
+}
+
+.modal-content p {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content input[type="email"]:focus,
+.modal-content textarea:focus {
+  border-color: #4a5d4e;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 93, 78, 0.1);
+}
+
+.modal-content textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.selected-trail-preview {
+  background: #f9faf8;
+  border-left: 4px solid #4a5d4e;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.selected-trail-preview h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 600;
+}
+
+.selected-trail-preview strong {
+  color: #2c3531;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.selected-trail-preview span {
+  display: block;
+  color: #777;
+  font-size: 0.85rem;
+}
+
+/* Confirmation section styling */
+#formConfirmation {
+  text-align: center;
+}
+
+#formConfirmation .conf-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+#formConfirmation h3 {
+  color: #2c3531;
+  margin-bottom: 0.5rem;
+}
+
+#formConfirmation p {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.confirmed-itinerary {
+  background: #f9faf8;
+  border: 1px solid #d9d9d9;
+  padding: 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.confirmed-itinerary h4 {
+  margin-top: 0;
+  color: #2c3531;
+  font-size: 1rem;
+}
+
+.confirmed-itinerary div {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+#confirmationDetails {
+  text-align: left;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 95%;
+    padding: 1.5rem;
+    max-height: 95vh;
+  }
+
+  .modal-content input,
+  .modal-content textarea {
+    font-size: 16px;
+  }
+
+  #formConfirmation .conf-icon {
+    font-size: 2rem;
+  }
+}

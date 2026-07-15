@@ -48,23 +48,33 @@
       <section id="hikeModal" class="modal-overlay hidden">
         <div class="modal-content">
           <button id="closeModalBtn" class="close-btn">&times;</button>
-          
+           
           <!-- Form State -->
-          <form id="planHikeForm">
+          <form id="planHikeForm" novalidate>
             <h2>Plan Your Hike</h2>
             <p>Select a trail to email the details to yourself.</p>
-            
-            <label for="modalTrailSelect">Selected Trail:</label>
-            <input type="text" id="modalTrailSelect" readonly>
+             
+            <div style="margin-bottom: 1.25rem;">
+              <label for="modalTrailSelect">Selected Trail:</label>
+              <input type="text" id="modalTrailSelect" readonly>
+            </div>
 
-            <label for="userName">Name *</label>
-            <input type="text" id="userName" required placeholder="Your full name">
+            <div style="margin-bottom: 1.25rem;">
+              <label for="userName">Name <span style="color: #d9534f;">*</span></label>
+              <input type="text" id="userName" required placeholder="Your full name">
+              <span class="error-message" id="nameError"></span>
+            </div>
 
-            <label for="userEmail">Email *</label>
-            <input type="email" id="userEmail" required placeholder="yourname@example.com">
+            <div style="margin-bottom: 1.25rem;">
+              <label for="userEmail">Email <span style="color: #d9534f;">*</span></label>
+              <input type="email" id="userEmail" required placeholder="yourname@example.com">
+              <span class="error-message" id="emailError"></span>
+            </div>
 
-            <label for="userNotes">Optional Notes</label>
-            <textarea id="userNotes" rows="4" placeholder="Any gear reminders, dates, or safety notes..."></textarea>
+            <div style="margin-bottom: 1.25rem;">
+              <label for="userNotes">Optional Notes</label>
+              <textarea id="userNotes" rows="4" placeholder="Any gear reminders, dates, or safety notes..."></textarea>
+            </div>
 
             <button type="submit" class="submit-btn">Email Me My Hike Plan</button>
           </form>

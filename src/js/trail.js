@@ -1,4 +1,8 @@
+import { initializeModalHandler, openPlanModal } from './modal-handler.js';
+
 const detailContainer = document.querySelector("#trailDetails");
+
+let allHikes = [];
 
 function getTrailIdFromUrl() {
     const params = new URLSearchParams(window.location.search);
@@ -36,17 +40,43 @@ function renderTrail(trail) {
 
     detailContainer.innerHTML = `
         <section class="hike-card">
-            <img src="${trail.image}" alt="${trail.name}" />
-            <h2>${trail.name}</h2>
-            <p><strong>Location:</strong> ${trail.location}</p>
+            <img src="${escapeHtml(trail.image)}" alt="${escapeHtml(trail.name)}" />
+            <h2>${escapeHtml(trail.name)}</h2>
+            <p><strong>Location:</strong> ${escapeHtml(trail.location)}</p>
             <p><strong>Distance:</strong> ${trail.distance} miles from Rexburg</p>
-            <p><strong>Length:</strong> ${trail.length}</p>
-            <p><strong>Difficulty:</strong> ${trail.difficulty}</p>
-            <p><strong>Elevation Gain:</strong> ${trail.elevationGain}</p>
-            <p><strong>Estimated Time:</strong> ${trail.time}</p>
-            <p>${trail.description}</p>
+            <p><strong>Length:</strong> ${escapeHtml(trail.length)}</p>
+            <p><strong>Difficulty:</strong> ${escapeHtml(trail.difficulty)}</p>
+            <p><strong>Elevation Gain:</strong> ${escapeHtml(trail.elevationGain)}</p>
+            <p><strong>Estimated Time:</strong> ${escapeHtml(trail.time)}</p>
+            <p>${escapeHtml(trail.description)}</p>
+            
+            <div class="trail-card-actions">
+                <button class="plan-hike-btn" id="planHikeBtn" data-trail-id="${trail.id}">
+                    Plan This Hike 🌲
+                </button>
+            </div>
         </section>
     `;
+
+    // Add event listener to plan hike button
+    const planBtn = document.getElementById('planHikeBtn');
+    if (planBtn) {
+        planBtn.addEventListener('click', () => {
+            openPlanModal(trail, allHikes);
+        });
+    }
+}
+
+function escapeHtml(text) {
+    if (typeof text !== 'string') return '';
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
 }
 
 async function loadTrail() {
@@ -65,6 +95,7 @@ async function loadTrail() {
         }
 
         const trails = await response.json();
+        allHikes = trails;
         const trail = trails.find((item) => item.id == trailId);
 
         if (!trail) {
@@ -73,6 +104,7 @@ async function loadTrail() {
         }
 
         renderTrail(trail);
+        initializeModalHandler(allHikes);
     } catch (error) {
         console.error("Error loading trail:", error);
         showMessage("Unable to load trail details at this time.");

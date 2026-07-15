@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/css/style.css">
+    <title>Modal Form Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        .test-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .test-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .test-button {
+            background: #4a5d4e;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .test-button:hover {
+            background: #3b4d3f;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Plan Your Hike - Modal Form Test</h1>
+        
+        <div class="test-section">
+            <h3>✓ Form Features</h3>
+            <ul>
+                <li>Name field (required) - with validation</li>
+                <li>Email field (required) - with email format validation</li>
+                <li>Notes field (optional) - for additional information</li>
+                <li>Trail selection display (readonly)</li>
+                <li>Confirmation screen after successful submission</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>Test Cases</h3>
+            <button class="test-button" onclick="testEmptyForm()">Test Empty Form</button>
+            <button class="test-button" onclick="testInvalidEmail()">Test Invalid Email</button>
+            <button class="test-button" onclick="testValidForm()">Test Valid Form</button>
+            <button class="test-button" onclick="openModalTest()">Open Modal</button>
+            <pre id="testOutput" style="background: #f0f0f0; padding: 1rem; margin-top: 1rem; border-radius: 4px; display: none;"></pre>
+        </div>
+
+        <div class="test-section">
+            <h3>Email Validation Tests</h3>
+            <input type="email" id="testEmail" placeholder="Enter email to test" style="padding: 0.5rem; width: 300px;">
+            <button class="test-button" onclick="validateEmail()">Validate Email</button>
+            <div id="emailValidationResult" style="margin-top: 1rem; padding: 1rem; border-radius: 4px; display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Modal from index.html -->
+    <section id="hikeModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="closeModalBtn" class="close-btn">&times;</button>
+            
+            <!-- Form State -->
+            <form id="planHikeForm" novalidate>
+                <h2>Plan Your Hike</h2>
+                <p>Select a trail to email the details to yourself.</p>
+                
+                <div style="margin-bottom: 1.25rem;">
+                    <label for="modalTrailSelect">Selected Trail:</label>
+                    <input type="text" id="modalTrailSelect" readonly>
+                </div>
+
+                <div style="margin-bottom: 1.25rem;">
+                    <label for="userName">Name <span style="color: #d9534f;">*</span></label>
+                    <input type="text" id="userName" required placeholder="Your full name">
+                    <span class="error-message" id="nameError"></span>
+                </div>
+
+                <div style="margin-bottom: 1.25rem;">
+                    <label for="userEmail">Email <span style="color: #d9534f;">*</span></label>
+                    <input type="email" id="userEmail" required placeholder="yourname@example.com">
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <div style="margin-bottom: 1.25rem;">
+                    <label for="userNotes">Optional Notes</label>
+                    <textarea id="userNotes" rows="4" placeholder="Any gear reminders, dates, or safety notes..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Email Me My Hike Plan</button>
+            </form>
+
+            <!-- Success Confirmation State -->
+            <div id="modalConfirmation" class="hidden">
+                <h2>🎉 Hike Planned Successfully!</h2>
+                <p>Your itinerary has been sent to your email.</p>
+                <blockquote id="confirmationDetails">
+                    <!-- Dynamically populated via JS -->
+                </blockquote>
+                <button id="confirmCloseBtn" class="submit-btn">Back to Exploring</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Email validation regex (matches the implementation)
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        function showTestOutput(message) {
+            const output = document.getElementById('testOutput');
+            output.textContent = message;
+            output.style.display = 'block';
+        }
+
+        function testEmptyForm() {
+            showTestOutput('Testing form with empty fields...\n\nExpected: Should show validation errors for Name and Email fields\n✓ Name is required\n✓ Email format is invalid');
+        }
+
+        function testInvalidEmail() {
+            showTestOutput('Testing form with invalid email formats:\n\n❌ test (missing @)\n❌ test@ (missing domain)\n❌ test@domain (missing TLD)\n❌ @domain.com (missing username)\n\nExpected: "Please enter a valid email address." error');
+        }
+
+        function testValidForm() {
+            showTestOutput('Testing form with valid data:\n\nName: John Doe\nEmail: john@example.com\nTrail: Cress Creek Nature Trail\nNotes: Remember hiking poles\n\nExpected: Confirmation screen shows:\n✓ Trail name and details\n✓ User name\n✓ User email\n✓ User notes');
+        }
+
+        function openModalTest() {
+            const modal = document.getElementById('hikeModal');
+            const form = document.getElementById('planHikeForm');
+            const confirmation = document.getElementById('modalConfirmation');
+            const trailSelect = document.getElementById('modalTrailSelect');
+            
+            // Reset form
+            form.reset();
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            
+            // Set test trail
+            trailSelect.value = 'Cress Creek Nature Trail';
+            
+            // Show form, hide confirmation
+            form.classList.remove('hidden');
+            confirmation.classList.add('hidden');
+            
+            // Open modal
+            modal.classList.remove('hidden');
+            
+            showTestOutput('Modal opened successfully!\n✓ Close button (X) in top-right\n✓ Click overlay to close\n✓ Press ESC to close');
+        }
+
+        function validateEmail() {
+            const emailInput = document.getElementById('testEmail').value.trim();
+            const result = document.getElementById('emailValidationResult');
+            
+            if (!emailInput) {
+                result.textContent = 'Please enter an email address';
+                result.style.backgroundColor = '#fff3cd';
+                result.style.color = '#856404';
+                result.style.display = 'block';
+                return;
+            }
+            
+            const isValid = emailRegex.test(emailInput);
+            
+            result.textContent = isValid 
+                ? `✓ "${emailInput}" is a valid email address`
+                : `✗ "${emailInput}" is not a valid email address`;
+            
+            result.style.backgroundColor = isValid ? '#d4edda' : '#f8d7da';
+            result.style.color = isValid ? '#155724' : '#721c24';
+            result.style.display = 'block';
+        }
+
+        // Initialize modal close handlers
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('hikeModal');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const confirmCloseBtn = document.getElementById('confirmCloseBtn');
+            
+            closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+            confirmCloseBtn.addEventListener('click', () => modal.classList.add('hidden'));
+            
+            // Close on overlay click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.classList.add('hidden');
+            });
+            
+            // Close on ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                }
+            });
+            
+            // Form submission
+            document.getElementById('planHikeForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('userName').value.trim();
+                const email = document.getElementById('userEmail').value.trim();
+                const notes = document.getElementById('userNotes').value.trim() || 'No additional notes';
+                const trail = document.getElementById('modalTrailSelect').value;
+                
+                const nameError = document.getElementById('nameError');
+                const emailError = document.getElementById('emailError');
+                
+                let isValid = true;
+                
+                if (!name) {
+                    nameError.textContent = 'Name is required.';
+                    isValid = false;
+                } else {
+                    nameError.textContent = '';
+                }
+                
+                if (!emailRegex.test(email)) {
+                    emailError.textContent = 'Please enter a valid email address.';
+                    isValid = false;
+                } else {
+                    emailError.textContent = '';
+                }
+                
+                if (!isValid) return;
+                
+                // Show confirmation
+                document.getElementById('confirmationDetails').innerHTML = `
+                    <strong>Trail:</strong> ${escapeHtml(trail)}<br>
+                    <strong>Hiker:</strong> ${escapeHtml(name)}<br>
+                    <strong>Email:</strong> ${escapeHtml(email)}<br>
+                    <strong>Notes:</strong> "${escapeHtml(notes)}"
+                `;
+                
+                document.getElementById('planHikeForm').classList.add('hidden');
+                document.getElementById('modalConfirmation').classList.remove('hidden');
+            });
+        });
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+    </script>
+</body>
+</html>

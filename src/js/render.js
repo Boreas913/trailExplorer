@@ -33,3 +33,20 @@ export function renderTrailCard(trail) {
 
   return card;
 }
+
+/**
+ * Renders a trail preview in the modal
+ * @param {Object} trail - The trail data object
+ * @param {String} containerId - The ID of the container to render into
+ */
+export function renderModalTrailPreview(trail, containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  container.innerHTML = `
+    <strong>${trail.name}</strong><br>
+    <span style="font-size: 0.9rem; color: #666;">
+      ${trail.location} • ${trail.length} • ${trail.difficulty}
+    </span>
+  `;
+}
