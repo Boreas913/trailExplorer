@@ -286,4 +286,59 @@ planForm?.addEventListener('submit', function (e) {
   formConfirmation.classList.remove('hidden');
 });
 
+// Function to open modal and pass trail data
+export function openPlanModal(trailName) {
+  const modal = document.getElementById('hikeModal');
+  const trailInput = document.getElementById('modalTrailSelect');
+  const form = document.getElementById('planHikeForm');
+  const confirmation = document.getElementById('modalConfirmation');
+
+  // Reset modal views
+  form.classList.remove('hidden');
+  confirmation.classList.add('hidden');
+  form.reset();
+
+  // Populate read-only trail name
+  trailInput.value = trailName;
+  modal.classList.remove('hidden');
+}
+
+// Function to close modal
+function closeModal() {
+  document.getElementById('hikeModal').classList.add('hidden');
+}
+
+// Initialize Modal Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const confirmCloseBtn = document.getElementById('confirmCloseBtn');
+  const planHikeForm = document.getElementById('planHikeForm');
+
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+  if (confirmCloseBtn) confirmCloseBtn.addEventListener('click', closeModal);
+
+  if (planHikeForm) {
+    planHikeForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent page refresh
+
+      const name = document.getElementById('userName').value;
+      const email = document.getElementById('userEmail').value;
+      const trail = document.getElementById('modalTrailSelect').value;
+      const notes = document.getElementById('userNotes').value || "None";
+
+      // Populate confirmation details view
+      const detailsBox = document.getElementById('confirmationDetails');
+      detailsBox.innerHTML = `
+        <strong>Trail:</strong> ${trail}<br>
+        <strong>Sent To:</strong> ${name} (${email})<br>
+        <strong>Notes:</strong> "${notes}"
+      `;
+
+      // Toggle form / confirmation windows
+      document.getElementById('planHikeForm').classList.add('hidden');
+      document.getElementById('modalConfirmation').classList.remove('hidden');
+    });
+  }
+});
+
 document.addEventListener("DOMContentLoaded", loadHikes);

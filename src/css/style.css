@@ -373,3 +373,122 @@ footer {
   margin-bottom: 1.5rem;
   text-align: left;
 }
+
+/* Modal Styling */
+.hidden {
+  display: none !important;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  background-color: #fcfaf2; /* Light earth tone */
+  padding: 2.5rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border: 2px solid #4a5d4e; /* Forest green accent */
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #4a5d4e;
+  cursor: pointer;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #2c3531;
+}
+
+.modal-content input, 
+.modal-content textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccd5ae;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.modal-content input[readonly] {
+  background-color: #e9edc9;
+  font-weight: bold;
+  color: #4a5d4e;
+}
+
+.submit-btn {
+  background-color: #4a5d4e;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #3b4d3f;
+}
+
+blockquote {
+  background-color: #e9edc9;
+  border-left: 5px solid #4a5d4e;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 6px 6px 0;
+  text-align: left;
+}
+
+.trail-card-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.plan-hike-btn {
+  background-color: #2c3531; /* Deep charcoal/green */
+  color: #fcfaf2;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.plan-hike-btn:hover {
+  background-color: #4a5d4e; /* Earthy Forest green */
+  transform: translateY(-1px);
+}
+
+.plan-hike-btn:active {
+  transform: translateY(0);
+}

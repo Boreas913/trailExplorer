@@ -43,63 +43,45 @@
         </div>
       </div>
       <div id="favoriteTrails" class="cards-container"></div>
-      <footer></footer>
-    </main>
-    <!-- Plan Your Hike Modal -->
-<div id="hikeModal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
-  <div class="modal-overlay"></div>
-  <div class="modal-content">
-    <button class="close-modal" id="closeModalBtn" aria-label="Close modal">&times;</button>
-    
-    <!-- Form State -->
-    <div id="formContainer">
-      <h2 id="modalTitle">Plan Your Hike</h2>
-      <p class="modal-subtitle">Fill out your details to email your trail itinerary!</p>
       
-      <form id="planHikeForm" novalidate>
-        <input type="hidden" id="selectedTrailId" name="trailId">
-        
-        <div class="form-group">
-          <label for="hikeName">Your Name <span class="required">*</span></label>
-          <input type="text" id="hikeName" name="name" required placeholder="John Doe">
-          <span class="error-message" id="nameError"></span>
-        </div>
+      <!-- PLAN YOUR HIKE MODAL -->
+      <section id="hikeModal" class="modal-overlay hidden">
+        <div class="modal-content">
+          <button id="closeModalBtn" class="close-btn">&times;</button>
+          
+          <!-- Form State -->
+          <form id="planHikeForm">
+            <h2>Plan Your Hike</h2>
+            <p>Select a trail to email the details to yourself.</p>
+            
+            <label for="modalTrailSelect">Selected Trail:</label>
+            <input type="text" id="modalTrailSelect" readonly>
 
-        <div class="form-group">
-          <label for="hikeEmail">Your Email <span class="required">*</span></label>
-          <input type="email" id="hikeEmail" name="email" required placeholder="john@example.com">
-          <span class="error-message" id="emailError"></span>
-        </div>
+            <label for="userName">Name *</label>
+            <input type="text" id="userName" required placeholder="Your full name">
 
-        <div class="form-group">
-          <label for="hikeNotes">Optional Notes</label>
-          <textarea id="hikeNotes" name="notes" placeholder="e.g. Remember hiking poles, start before sunrise!"></textarea>
-        </div>
+            <label for="userEmail">Email *</label>
+            <input type="email" id="userEmail" required placeholder="yourname@example.com">
 
-        <div class="selected-trail-preview">
-          <h4>Selected Trail:</h4>
-          <div id="selectedTrailPreview">
-            <!-- Trail info will be dynamically populated here -->
+            <label for="userNotes">Optional Notes</label>
+            <textarea id="userNotes" rows="4" placeholder="Any gear reminders, dates, or safety notes..."></textarea>
+
+            <button type="submit" class="submit-btn">Email Me My Hike Plan</button>
+          </form>
+
+          <!-- Success Confirmation State -->
+          <div id="modalConfirmation" class="hidden">
+            <h2>🎉 Hike Planned Successfully!</h2>
+            <p>Your itinerary has been sent to your email.</p>
+            <blockquote id="confirmationDetails">
+              <!-- Dynamically populated via JS -->
+            </blockquote>
+            <button id="confirmCloseBtn" class="submit-btn">Back to Exploring</button>
           </div>
         </div>
+      </section>
 
-        <button type="submit" class="submit-btn">Send My Plan</button>
-      </form>
-    </div>
-
-    <div id="formConfirmation" class="confirmation-message hidden">
-      <div class="conf-icon">🎉</div>
-      <h3>Hike Planned Successfully!</h3>
-      <p id="confirmationText"></p>
-      
-      <div class="confirmed-itinerary">
-        <h4>Your Itinerary Details:</h4>
-        <div id="confirmedTrailDetails"></div>
-      </div>
-      
-      <button id="closeConfirmBtn" class="close-btn">Awesome, let's go!</button>
-    </div>
-  </div>
-</div>
+      <footer></footer>
+    </main>
   </body>
 </html>

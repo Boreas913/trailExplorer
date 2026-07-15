@@ -1,20 +1,35 @@
-// src/js/render.js
+import { openPlanModal } from './main.js';
 
 /**
- * Renders the preview of a trail inside the planning modal
- * @param {Object} trail 
+ * Generates the HTML string or DOM elements for a trail card
+ * @param {Object} trail - The trail data object (e.g., { name: 'Cascade Falls', difficulty: 'Easy', ... })
  */
-export function renderModalTrailPreview(trail, targetElementId) {
-  const container = document.getElementById(targetElementId);
-  if (!container) return;
+export function renderTrailCard(trail) {
+  // Create card element
+  const card = document.createElement('div');
+  card.className = 'trail-card';
 
-  container.innerHTML = `
-    <div style="display: flex; gap: 1rem; align-items: center;">
-      ${trail.image ? `<img src="${trail.image}" alt="${trail.name}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 6px;">` : ''}
-      <div>
-        <strong style="font-size: 1.1rem; color: #2d5a27;">${trail.name}</strong><br>
-        <span style="font-size: 0.85rem; color: #666;">${trail.location} • ${trail.distance} miles • ${trail.difficulty}</span>
+  card.innerHTML = `
+    <img src="${trail.image || 'https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=300&q=80'}" alt="${trail.name}" class="trail-card-image">
+    <div class="trail-card-content">
+      <h3>${trail.name}</h3>
+      <p><strong>Difficulty:</strong> ${trail.difficulty}</p>
+      <p>${trail.description || 'A beautiful scenic trail waiting to be explored.'}</p>
+      
+      <div class="trail-card-actions">
+        <button class="plan-hike-btn" data-trail-name="${trail.name}">
+          Plan Hike 🌲
+        </button>
       </div>
     </div>
   `;
+
+  // Attach event listener directly to the button inside this card
+  const planBtn = card.querySelector('.plan-hike-btn');
+  planBtn.addEventListener('click', (e) => {
+    const trailName = e.target.getAttribute('data-trail-name');
+    openPlanModal(trailName);
+  });
+
+  return card;
 }
