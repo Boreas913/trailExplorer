@@ -1,22 +1,34 @@
 import { allHikes, displayHikes } from "./hikeData.js";
 import { getFavorites, toggleFavorite, refreshHikeFavoriteButton } from "./favorites.js";
 
-const hikeSearchInput = document.querySelector('input[placeholder="Search For New Hikes"]');
-const favoritesSearchInput = document.querySelector('input[placeholder="Search Through Your Favorites"]');
-const hikeCardsContainer = document.getElementById("hikeCards");
-const favoritesContainer = document.getElementById("favoriteTrails");
-
 export function setupSearchListeners() {
+  const hikeSearchInput = document.querySelector('input[placeholder="Search For New Hikes"]');
+  const favoritesSearchInput = document.querySelector('input[placeholder="Search Through Your Favorites"]');
+  const hikeCardsContainer = document.getElementById("hikeCards");
+  const favoritesContainer = document.getElementById("favoriteTrails");
+
+  // Get the forms and prevent their submission
+  const hikeForms = document.querySelectorAll("form");
+  
+  hikeForms.forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+    });
+  });
+
+  // Setup hike search
   if (hikeSearchInput) {
-    hikeSearchInput.addEventListener("input", filterHikes);
+    hikeSearchInput.addEventListener("input", () => filterHikes(hikeSearchInput, hikeCardsContainer));
   }
+
+  // Setup favorites search
   if (favoritesSearchInput) {
-    favoritesSearchInput.addEventListener("input", filterFavorites);
+    favoritesSearchInput.addEventListener("input", () => filterFavorites(favoritesSearchInput, favoritesContainer));
   }
 }
 
-function filterHikes() {
-  const searchTerm = hikeSearchInput.value.toLowerCase().trim();
+function filterHikes(searchInput, container) {
+  const searchTerm = searchInput.value.toLowerCase().trim();
 
   if (!searchTerm) {
     displayHikes(allHikes);
@@ -32,12 +44,12 @@ function filterHikes() {
   displayHikes(filteredHikes);
 }
 
-function filterFavorites() {
-  const searchTerm = favoritesSearchInput.value.toLowerCase().trim();
+function filterFavorites(searchInput, container) {
+  const searchTerm = searchInput.value.toLowerCase().trim();
   const favorites = getFavorites();
 
   if (!searchTerm) {
-    displayFilteredFavorites(favorites);
+    displayFilteredFavorites(favorites, container);
     return;
   }
 
@@ -47,14 +59,14 @@ function filterFavorites() {
     hike.difficulty.toLowerCase().includes(searchTerm)
   );
 
-  displayFilteredFavorites(filteredFavorites);
+  displayFilteredFavorites(filteredFavorites, container);
 }
 
-function displayFilteredFavorites(favorites) {
-  favoritesContainer.innerHTML = "";
+function displayFilteredFavorites(favorites, container) {
+  container.innerHTML = "";
 
   if (favorites.length === 0) {
-    favoritesContainer.innerHTML =
+    container.innerHTML =
       "<p>No favorite hikes found. Click the heart icon on a hike card to add it to your favorites.</p>";
     return;
   }
@@ -93,7 +105,8 @@ function displayFilteredFavorites(favorites) {
       window.location.href = `trail.html?id=${hike.id}`;
     });
 
-    favoritesContainer.appendChild(card);
+    container.appendChild(card);
   });
 }
+
 
