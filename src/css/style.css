@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Playfair+Display&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +6,10 @@
 }
 :root {
 --mainBrown: #6A5B39;
+--blue: #74acbe;
+--darkBrown: #3f3425;
+--Brown: #716955;
+--lightbrown: #908c7a;
 }
 
 h1, h2, h3 {
@@ -15,7 +18,7 @@ h1, h2, h3 {
 
 body, html {
     height: 100%;
-    font-family: 'Playfair';
+    font-family: 'Playfair Display';
 }
 
 /* The hero image */
@@ -48,7 +51,7 @@ body, html {
 }
 
 .hike-card {
-  background: white;
+  background: var(--lightbrown);
   border-radius: 14px;
   padding: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
