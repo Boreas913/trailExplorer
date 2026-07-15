@@ -1,4 +1,5 @@
 const cardsContainer = document.querySelector("#hikeCards");
+const favoritesContainer = document.querySelector("#favoriteTrails");
 
 const modal = document.querySelector("#hikeModal");
 const closeModalButton = document.querySelector("#closeModal");
@@ -9,6 +10,8 @@ const modalLocation = document.querySelector("#modalLocation");
 const modalDistance = document.querySelector("#modalDistance");
 const modalDifficulty = document.querySelector("#modalDifficulty");
 const modalDescription = document.querySelector("#modalDescription");
+
+let allHikes = [];
 
 
 async function loadHikes() {
@@ -22,8 +25,10 @@ async function loadHikes() {
         }
 
         const hikes = await response.json();
+        allHikes = hikes;
 
         displayHikes(hikes);
+        displayFavorites();
     } catch (error) {
         console.error("Error loading hikes:", error);
 
@@ -98,6 +103,71 @@ function updateFavoriteButton(button, hike) {
     );
 }
 
+function refreshHikeFavoriteButton(hikeId) {
+    const hike = allHikes.find((item) => item.id === hikeId);
+    const button = document.querySelector(
+        `#hikeCards .favorite-btn[data-id="${hikeId}"]`
+    );
+
+    if (button && hike) {
+        updateFavoriteButton(button, hike);
+    }
+}
+
+function displayFavorites() {
+    if (!favoritesContainer) {
+        return;
+    }
+
+    const favorites = getFavorites();
+    favoritesContainer.innerHTML = "";
+
+    if (favorites.length === 0) {
+        favoritesContainer.innerHTML =
+            "<p>No favorite hikes yet. Click the heart icon on a hike card to add it to your favorites.</p>";
+        return;
+    }
+
+    favorites.forEach((hike) => {
+        const card = document.createElement("section");
+        card.classList.add("hike-card");
+
+        card.innerHTML = `
+            <button
+                class="favorite-btn favorited"
+                type="button"
+                aria-label="Remove ${hike.name} from favorites"
+                data-id="${hike.id}"
+            >
+                ♥
+            </button>
+
+            <h2>${hike.name}</h2>
+            <p><strong>Location:</strong> ${hike.location}</p>
+            <p>
+                <strong>Distance:</strong>
+                ${hike.distance} miles from Rexburg
+            </p>
+            <p><strong>Difficulty:</strong> ${hike.difficulty}</p>
+        `;
+
+        const favoriteButton = card.querySelector(".favorite-btn");
+
+        favoriteButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+
+            toggleFavorite(hike);
+            refreshHikeFavoriteButton(hike.id);
+        });
+
+        card.addEventListener("click", () => {
+            openModal(hike);
+        });
+
+        favoritesContainer.appendChild(card);
+    });
+}
+
 function openModal(hike) {
     if (!modal) {
         console.error('Could not find an element with id="hikeModal".');
@@ -145,6 +215,7 @@ function toggleFavorite(hike) {
     }
 
     localStorage.setItem("favorites", JSON.stringify(favorites));
+    displayFavorites();
 }
 
 if (closeModalButton) {
