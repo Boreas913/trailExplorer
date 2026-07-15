@@ -626,6 +626,14 @@ blockquote {
   text-align: left;
 }
 
+/* Trail detail page image styling */
+.hike-card img {
+  max-width: 33.33%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
 /* Responsive adjustments */
 @media (max-width: 600px) {
   .modal-content {
@@ -641,5 +649,9 @@ blockquote {
 
   #formConfirmation .conf-icon {
     font-size: 2rem;
+  }
+
+  .hike-card img {
+    max-width: 50%;
   }
 }
