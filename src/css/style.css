@@ -13,7 +13,7 @@ body, html {
 
 /* The hero image */
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/src/images/pexels-ahmetmert-20019699.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/pexels-ahmetmert-20019699.jpg");
   height: 20%;
   background-position: center;
   background-repeat: no-repeat;
@@ -87,10 +87,13 @@ body, html {
   border-radius: 16px;
   padding: 20px;
   position: relative;
+  overflow: hidden;
 }
 
 .modal-content img {
   width: 100%;
+  max-height: 60vh;
+  object-fit: cover;
   border-radius: 12px;
   margin-bottom: 15px;
 }
@@ -188,4 +191,20 @@ footer {
 
 .favorite-btn.favorited {
     color: crimson;
+}
+
+.detail-page {
+    padding: 20px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--mainBrown);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
 }

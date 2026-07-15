@@ -1,19 +1,7 @@
 const cardsContainer = document.querySelector("#hikeCards");
 const favoritesContainer = document.querySelector("#favoriteTrails");
-const pageContent = document.querySelector("#pageContent");
-
-const modal = document.querySelector("#hikeModal");
-const closeModalButton = document.querySelector("#closeModal");
-
-const modalImage = document.querySelector("#modalImage");
-const modalName = document.querySelector("#modalName");
-const modalLocation = document.querySelector("#modalLocation");
-const modalDistance = document.querySelector("#modalDistance");
-const modalDifficulty = document.querySelector("#modalDifficulty");
-const modalDescription = document.querySelector("#modalDescription");
 
 let allHikes = [];
-
 
 async function loadHikes() {
     try {
@@ -83,7 +71,7 @@ function displayHikes(hikes) {
         });
 
         card.addEventListener("click", () => {
-            openModal(hike);
+            window.location.href = `trail.html?id=${hike.id}`;
         });
 
         cardsContainer.appendChild(card);
@@ -162,35 +150,11 @@ function displayFavorites() {
         });
 
         card.addEventListener("click", () => {
-            openModal(hike);
+            window.location.href = `trail.html?id=${hike.id}`;
         });
 
         favoritesContainer.appendChild(card);
     });
-}
-
-function openModal(hike) {
-    if (!modal) {
-        console.error('Could not find an element with id="hikeModal".');
-        return;
-    }
-
-    modalImage.src = hike.image;
-    modalImage.alt = hike.name;
-
-    modalName.textContent = hike.name;
-    modalLocation.textContent = `Location: ${hike.location}`;
-    modalDistance.textContent = `Trail Length: ${hike.length}`;
-    modalDifficulty.textContent = `Difficulty: ${hike.difficulty}`;
-    modalDescription.textContent = hike.description;
-
-    pageContent?.classList.add("hidden");
-    modal.classList.remove("hidden");
-}
-
-function closeHikeModal() {
-    modal.classList.add("hidden");
-    pageContent?.classList.remove("hidden");
 }
 
 function getFavorites() {
@@ -221,22 +185,4 @@ function toggleFavorite(hike) {
     displayFavorites();
 }
 
-if (closeModalButton) {
-    closeModalButton.addEventListener("click", closeHikeModal);
-}
-
-if (modal) {
-    modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-            closeHikeModal();
-        }
-    });
-}
-
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !modal.classList.contains("hidden")) {
-        closeHikeModal();
-    }
-});
-
-loadHikes();
+document.addEventListener("DOMContentLoaded", loadHikes);
