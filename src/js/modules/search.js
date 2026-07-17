@@ -1,5 +1,5 @@
 import { allHikes, displayHikes } from "./hikeData.js";
-import { getFavorites, toggleFavorite, refreshHikeFavoriteButton } from "./favorites.js";
+import { getFavorites, toggleFavorite } from "./favorites.js";
 
 export function setupSearchListeners() {
   const hikeSearchInput = document.querySelector('input[placeholder="Search For New Hikes"]');
