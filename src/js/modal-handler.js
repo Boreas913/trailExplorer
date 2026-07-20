@@ -110,6 +110,12 @@ export function initializeModalHandler(allHikes = []) {
     if (modal) {
       modal.classList.add('hidden');
     }
+    // Re-enable page scrolling when the modal is closed
+    try {
+      document.body.style.overflow = '';
+    } catch (e) {
+      // Ignore if document.body is not available for some reason
+    }
   }
 }
 
@@ -150,6 +156,13 @@ export function openPlanModal(trail, allHikes = []) {
   // Show form, hide confirmation
   if (formContainer) formContainer.classList.remove('hidden');
   if (formConfirmation) formConfirmation.classList.add('hidden');
+
+  // Prevent background from scrolling while modal is open
+  try {
+    document.body.style.overflow = 'hidden';
+  } catch (e) {
+    // Ignore if document.body is not available
+  }
 
   // Open modal
   modal.classList.remove('hidden');
